@@ -1,7 +1,3 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
 makeCacheMatrix <- function(x = matrix()) {
   ## @x: a square invertible matrix
   ## return: a list containing functions to
@@ -12,7 +8,7 @@ makeCacheMatrix <- function(x = matrix()) {
   ##         this list is used as the input to cachSolve()
   inv = NULL
   set = function(y) {
-    x<<- y
+    x <<- y
     inv <<- NULL
   }
   get = function() x
@@ -46,3 +42,18 @@ cacheSolve <- function(x, ...) { ## @x: output of makeCacheMatrix()
   return(inv)
         ## Return a matrix that is the inverse of 'x'
 }
+> x = rbind(c(1, -1/8), c(-1/8, 1))
+##> m = makeCacheMatrix(x)
+##> m$get()
+##[,1]   [,2]
+##[1,]  1.000 -0.125
+##[2,] -0.125  1.000
+##> cacheSolve(m)
+##[,1]      [,2]
+##[1,] 1.0158730 0.1269841
+##[2,] 0.1269841 1.0158730
+##> cacheSolve(m)
+##getting cached data
+##[,1]      [,2]
+##[1,] 1.0158730 0.1269841
+##[2,] 0.1269841 1.0158730
